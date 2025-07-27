@@ -1,52 +1,57 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/inidex.css')}}">
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
 @section('content')
-<h1>商品一覧</h1>
-
-<!-- 検索フォーム -->
-<form method="GET" action="{{ route('products.index') }}">
-    <label for="search">商品名で検索</label>
-    <input type="text" name="keyword" id="search" value="{{ request('keyword') }}">
-    <label for="sort">価格順</label>
-    <select name="sort" id="sort">
-        <option value="">-- 選択 --</option>
-        <option value="asc" {{ request('sort') === 'asc' ? 'selected' : '' }}>価格が安い順</option>
-        <option value="desc" {{ request('sort') === 'desc' ? 'selected' : '' }}>価格が高い順</option>
-    </select>
-
-    <button type="submit">検索</button>
-    <a href="{{ route('products.index') }}"><button type="button">リセット</button></a>
-</form>
-
-<!-- 商品一覧 -->
-@foreach ($products as $product)
-    <div class="card">
-        <h2>{{ $product->name }}</h2>
-        <p>価格：¥{{ number_format($product->price) }}</p>
-        <p>季節：{{ $product->seasons->pluck('name')->join(', ') }}</p>
-        <p>{{ Str::limit($product->description, 60) }}</p>
-        @if ($product->image_path)
-            <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" style="max-width: 200px;">
-        @endif
-        <div>
-            <a href="{{ route('products.show', $product) }}">
-                <button type="button">詳細</button>
-            </a>
-        </div>
+<div class="product-list-page">
+    <div class="product-list-page__header">
+        <h1 class="product-list-page__title">商品一覧</h1>
+        <a href="{{ route('products.create') }}" class="product-list-page__add-button">＋ 商品を追加</a>
     </div>
-@endforeach
 
-<!-- ページネーション -->
-{{ $products->links() }}
+    <div class="product-list-page__body">
+        <!-- 左サイドバー -->
+        <aside class="product-list-page__sidebar">
+            <form method="GET" action="{{ route('products.index') }}" class="product-filter">
+                <label for="keyword" class="product-filter__label">商品名で検索</label>
+                <input type="text" name="keyword" id="keyword" class="product-filter__input" placeholder="商品名で検索" value="{{ request('keyword') }}">
 
-<!-- 商品追加ボタン -->
-<div style="margin-top: 30px;">
-    <a href="{{ route('products.create') }}">
-        <button>＋ 商品を追加</button>
-    </a>
+                <button type="submit" class="product-filter__button">検索</button>
+
+                <label for="sort" class="product-filter__label">価格順で表示</label>
+                <select name="sort" id="sort" class="product-filter__select">
+                    <option value="">価格で並べ替え</option>
+                    <option value="price_asc" {{ request('sort') === 'price_asc' ? 'selected' : '' }}>価格が安い順</option>
+                    <option value="price_desc" {{ request('sort') === 'price_desc' ? 'selected' : '' }}>価格が高い順</option>
+                </select>
+            </form>
+        </aside>
+
+        <!-- 商品一覧 -->
+        <section class="product-list-page__main">
+            <div class="product-grid">
+                @foreach ($products as $product)
+                <div class="product-card">
+                    @if ($product->image_path)
+                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="product-card__image">
+                    @endif
+                    <div class="product-card__info">
+                        <h2 class="product-card__name">{{ $product->name }}</h2>
+                        <p class="product-card__price">¥{{ number_format($product->price) }}</p>
+                        {{-- 季節や説明なども追加可能 --}}
+                    </div>
+                    <a href="{{ route('products.edit', $product) }}" class="product-card__button">詳細</a>
+                </div>
+                @endforeach
+            </div>
+
+            <!-- ページネーション -->
+            <div class="pagination">
+                {{ $products->links() }}
+            </div>
+        </section>
+    </div>
 </div>
 @endsection

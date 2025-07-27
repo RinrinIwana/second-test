@@ -1,139 +1,118 @@
-/* 全体共通 */
-body {
-    font-family: sans-serif;
-    background-color: #fdfdfd;
-    margin: 0;
-    padding: 0;
-}
-
-/* ヘッダーは style.css にて制御 */
-
-/* コンテナ */
-.container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-/* タイトル */
-h1 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 30px;
-}
-
-/* 検索フォーム */
-.search-form {
+/* レイアウト全体 */
+.product-list-page {
+    padding: 40px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-    justify-content: center;
-}
-
-.search-form input[type="text"],
-.search-form select {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* ボタン */
-.search-form button {
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f9c846;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.search-form button:hover {
-    background-color: #f1b300;
-}
-
-/* 商品カード一覧 */
-.product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    flex-direction: column;
     gap: 20px;
 }
 
-/* 商品カード */
-.product-card {
-    background-color: white;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+.product-list-page__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.product-card img {
-    max-width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 5px;
+.product-list-page__title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.product-list-page__add-button {
+    background-color: #FFA500;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* サイドバーとメインコンテンツの配置 */
+.product-list-page__body {
+    display: flex;
+    gap: 30px;
+}
+
+/* サイドバー */
+.product-list-page__sidebar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-filter__label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-filter__input,
+.product-filter__select {
+    width: 100%;
+    padding: 8px;
     margin-bottom: 10px;
 }
 
-.product-card h2 {
-    font-size: 18px;
-    margin: 10px 0 5px;
+.product-filter__button {
+    padding: 8px;
+    background-color: #FFD700;
+    border: none;
+    cursor: pointer;
 }
 
-.product-card p {
+/* 商品カードグリッド */
+.product-list-page__main {
+    flex: 1;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.product-card__image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.product-card__info {
+    padding: 10px;
+}
+
+.product-card__name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product-card__price {
     font-size: 14px;
-    margin: 5px 0;
+    color: #555;
+}
+
+.product-card__button {
+    margin-top: auto;
+    padding: 10px;
+    background-color: #FFA500;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 /* ページネーション */
 .pagination {
-    text-align: center;
     margin-top: 30px;
-}
-
-.pagination a,
-.pagination span {
-    display: inline-block;
-    margin: 0 5px;
-    padding: 8px 12px;
-    color: #333;
-    background-color: #eee;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.pagination .active {
-    background-color: #f9c846;
-    color: white;
-}
-
-/* "+商品を追加" ボタン */
-.add-button {
-    display: block;
-    width: fit-content;
-    margin: 30px auto 0;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-    border-radius: 5px;
-}
-
-.add-button:hover {
-    background-color: #45a049;
-}
-
-/* 並び替えの条件タグ */
-.condition-tag {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #666;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
