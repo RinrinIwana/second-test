@@ -48,8 +48,8 @@
             </div>
 
             <!-- ページネーション -->
-            <div class="pagination">
-                {{ $products->links() }}
+            <div class="product-index__pagination">
+                {{ $products->links('vendor.pagination.default') }}
             </div>
         </section>
     </div>

@@ -12,8 +12,6 @@
 
     <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="product-edit__form">
         @csrf
-        @method('PUT')
-
         <div class="product-edit__container">
             <!-- 左カラム -->
             <div class="product-edit__image-section">
