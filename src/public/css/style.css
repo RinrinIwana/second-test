@@ -1,0 +1,33 @@
+/* 全体共通 */
+body {
+    font-family: sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* 共通ヘッダー */
+header {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    color: #f9c846;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+/* mogitateロゴ（文字） */
+.header__logo{
+    color: #f9c846;
+    text-decoration: none;
+    font-size: 26px;
+}
+
+/* レスポンシブ（必要に応じて） */
+@media screen and (max-width: 600px) {
+    header {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+}

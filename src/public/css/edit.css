@@ -1,0 +1,73 @@
+.form-container {
+    max-width: 600px;
+    margin: 2em auto;
+    padding: 2em;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 1em;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 0.5em;
+    margin-top: 0.3em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 0.3em;
+}
+
+.checkboxes label {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.submit-button,
+.back-button {
+    padding: 0.5em 1.5em;
+    border: none;
+    background: #4CAF50;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.back-button {
+    background: #999;
+}
+
+.delete-form {
+    margin-top: 1.5em;
+    text-align: right;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #c00;
+}
