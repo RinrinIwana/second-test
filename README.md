@@ -33,14 +33,17 @@ php artisan key:generate
 
 6. マイグレーションの実行
 php artisan migrate
+
 7. シーディングの実行
 php artisan db:seed
 
+8. ティンカーの実行
+php artisan tinker
 
 使用技術(実行環境)
-PHP
-Laravel
-MySQL
+PHP 8.1.33
+Laravel 8.83.8
+MySQL 15.1
 
 ER図
 <img width="552" height="538" alt="スクリーンショット 2025-07-27 18 16 47" src="https://github.com/user-attachments/assets/6e65543a-9606-42dd-9a8c-8b5ffbcb0e28" />
