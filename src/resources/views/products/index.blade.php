@@ -12,7 +12,6 @@
     </div>
 
     <div class="product-list-page__body">
-        <!-- 左サイドバー -->
         <aside class="product-list-page__sidebar">
             <form method="GET" action="{{ route('products.index') }}" class="product-filter">
                 <label for="keyword" class="product-filter__label">商品名で検索</label>
@@ -29,7 +28,6 @@
             </form>
         </aside>
 
-        <!-- 商品一覧 -->
         <section class="product-list-page__main">
             <div class="product-grid">
                 @foreach ($products as $product)
@@ -47,7 +45,6 @@
                 @endforeach
             </div>
 
-            <!-- ページネーション -->
             <div class="product-index__pagination">
                 {{ $products->links('vendor.pagination.default') }}
             </div>
